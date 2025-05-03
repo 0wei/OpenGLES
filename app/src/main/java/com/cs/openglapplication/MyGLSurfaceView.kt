@@ -15,6 +15,7 @@ class MyGLSurfaceView(context: Context) : GLSurfaceView(context) {
         renderer = MyGLRenderer()
 
         // Set the Renderer for drawing on the GLSurfaceView
-        setRenderer(renderer)
+        // setRenderer(renderer)
+        setRenderer(OpenGLTimeRenderer(context))
     }
 }

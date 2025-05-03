@@ -12,6 +12,12 @@ import android.util.Log
 class MyGLRenderer() : GLSurfaceView.Renderer {
     lateinit var mTriangle: Triangle
     lateinit var mSquare: Square2
+
+    private val projectionMatrix = FloatArray(16)   // 视图位置
+    // vPMatrix is an abbreviation for "Model View Projection Matrix"
+    private val vPMatrix = FloatArray(16)           // projectionMatrix x viewMatrix
+    private val viewMatrix = FloatArray(16)         // camera 位置
+
     override fun onSurfaceCreated(unused: GL10, config: EGLConfig) {
         // Set the background frame color
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f)
@@ -49,10 +55,6 @@ class MyGLRenderer() : GLSurfaceView.Renderer {
     }
 
 
-    // vPMatrix is an abbreviation for "Model View Projection Matrix"
-    private val vPMatrix = FloatArray(16)
-    private val projectionMatrix = FloatArray(16)
-    private val viewMatrix = FloatArray(16)
 
     override fun onSurfaceChanged(unused: GL10, width: Int, height: Int) {
         GLES20.glViewport(0, 0, width, height)
